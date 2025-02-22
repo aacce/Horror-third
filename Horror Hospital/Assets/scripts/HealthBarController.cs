@@ -1,34 +1,61 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class HealthBarController : MonoBehaviour
+public class HealthBarController : NetworkBehaviour
 {
     public Slider healthBarSlider; // ตัว Slider
     public float maxHealth = 100f; // เลือดสูงสุด
-    private float currentHealth;   // เลือดปัจจุบัน
-
-    void Start()
+    private NetworkVariable<float> currentHealth = new NetworkVariable<float>(100f);   // เลือดปัจจุบัน
+    
+    public override void OnNetworkSpawn()
     {
-        currentHealth = maxHealth; // เริ่มต้นด้วยเลือดเต็ม
+        if (IsServer)
+        {
+            currentHealth.Value = maxHealth;
+        }
+        currentHealth.OnValueChanged += OnHealthChanged;
         UpdateHealthBar();
     }
 
-    public void TakeDamage(float damage)
+    private void OnHealthChanged(float oldHealth, float newHealth)
     {
-        currentHealth -= damage; // ลดค่าความเสียหาย
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // จำกัดไม่ให้ต่ำกว่า 0
+        Debug.Log($"[CLIENT] Health Changed: {oldHealth} -> {newHealth}");
         UpdateHealthBar();
     }
 
-    public void Heal(float healAmount)
+    [ServerRpc(RequireOwnership = false)]
+    public void TakeDamageServerRpc(float damage)
     {
-        currentHealth += healAmount; // เพิ่มค่าฟื้นฟู
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // จำกัดไม่ให้เกิน Max
-        UpdateHealthBar();
+        if (!IsServer) return;
+        currentHealth.Value = Mathf.Clamp(currentHealth.Value - damage, 0, maxHealth);
+        UpdateHealthUIClientRpc(currentHealth.Value);
     }
 
-    private void UpdateHealthBar()
+    [ServerRpc(RequireOwnership = false)]
+    public void HealServerRpc(float healAmount)
     {
-        healthBarSlider.value = currentHealth / maxHealth; // อัปเดตค่า Slider
+        currentHealth.Value = Mathf.Clamp(currentHealth.Value + healAmount, 0, maxHealth);
+        UpdateHealthUIClientRpc(currentHealth.Value);
+    }
+
+    public void UpdateHealthBar()
+    {
+        healthBarSlider.value = currentHealth.Value / maxHealth;
+    }
+
+    public void SetHealthBarColor(Color color)
+    {
+        if (healthBarSlider.fillRect != null)
+        {
+            healthBarSlider.fillRect.GetComponent<Image>().color = color;
+        }
+    }
+    
+    [ClientRpc]
+    private void UpdateHealthUIClientRpc(float newHealth)
+    {
+        Debug.Log($"[CLIENT RPC] Received updated health: {newHealth}");
+        healthBarSlider.value = newHealth / maxHealth;
     }
 }

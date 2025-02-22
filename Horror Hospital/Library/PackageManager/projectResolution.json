@@ -96,6 +96,14 @@
       "version": "1.0.0",
       "source": "builtin"
     },
+    "com.unity.netcode.gameobjects@2.2.0": {
+      "name": "com.unity.netcode.gameobjects",
+      "resolvedPath": "C:\\Users\\USER\\Downloads\\Horror-third\\Horror Hospital\\Library\\PackageCache\\com.unity.netcode.gameobjects",
+      "fingerprint": "f2477a6c90fe227d487326b01afaa677e0fa8f31",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "2.2.0",
+      "source": "registry"
+    },
     "com.unity.nuget.mono-cecil@1.11.4": {
       "name": "com.unity.nuget.mono-cecil",
       "resolvedPath": "C:\\Users\\USER\\Downloads\\Horror-third\\Horror Hospital\\Library\\PackageCache\\com.unity.nuget.mono-cecil",
@@ -403,6 +411,14 @@
       "resolvedPath": "C:\\Users\\USER\\Downloads\\Horror-third\\Horror Hospital\\Library\\PackageCache\\com.unity.modules.xr",
       "version": "1.0.0",
       "source": "builtin"
+    },
+    "com.unity.transport@2.4.0": {
+      "name": "com.unity.transport",
+      "resolvedPath": "C:\\Users\\USER\\Downloads\\Horror-third\\Horror Hospital\\Library\\PackageCache\\com.unity.transport",
+      "fingerprint": "c6e877f31661a406bdda774da5002457bd58723c",
+      "editorCompatibility": "2022.3.0a1",
+      "version": "2.4.0",
+      "source": "registry"
     }
   }
 }

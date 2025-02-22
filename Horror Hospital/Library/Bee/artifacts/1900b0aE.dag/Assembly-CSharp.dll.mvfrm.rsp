@@ -12,6 +12,11 @@ Library\Bee\artifacts\mvdfrm\Unity.Mathematics.Editor.ref.dll_9A20CFD48BC11F43.m
 Library\Bee\artifacts\mvdfrm\Unity.Mathematics.ref.dll_E8EFDB1B8D5C174E.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Multiplayer.Center.Common.ref.dll_EE36537354EA42C8.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Multiplayer.Center.Editor.ref.dll_EB1F4B6E56116D4A.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Netcode.Editor.PackageChecker.ref.dll_309C58284DD699E4.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Netcode.Editor.ref.dll_5B6B06A4AA08C33F.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Netcode.Runtime.ref.dll_DC22D56636C4177C.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Networking.Editor.ref.dll_96C11E09CCB711BF.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.Networking.Transport.ref.dll_EFD27BE74CCF752D.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.PackageValidationSuite.Editor.Extension.ref.dll_4B22C5FE5F048F8B.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.PackageValidationSuite.Editor.ref.dll_3389B80C4792EBCA.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.PlasticSCM.Editor.ref.dll_257AEB342BE77856.mvfrm

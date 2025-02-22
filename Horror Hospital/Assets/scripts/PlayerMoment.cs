@@ -1,23 +1,20 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class PlayerMoment : MonoBehaviour
+public class PlayerMoment : NetworkBehaviour
 {
     [Header("Movement")] 
     public float moveSpeed;
     public float runSpeed; 
     public float walkSpeed;
-
+    public float crouchSpeed;
+    
     public float groundDrag;
     
-    [Header("Stamina")]
-    public float maxStamina = 100f; // ค่า Stamina สูงสุด
-    private float currentStamina;   // ค่า Stamina ปัจจุบัน
-    public float staminaDrainRate = 20f; // อัตราการลด Stamina เมื่อวิ่ง (ต่อวินาที)
-    public float staminaRecoveryRate = 10f; // อัตราการฟื้นฟู Stamina (ต่อวินาที)
-    public float staminaCooldownTime = 2f; // เวลาหน่วงก่อนฟื้นฟู Stamina หลังวิ่ง
-    private bool canRecoverStamina = true;
+    [Header("Stamina System")]
+    public StaminaSystem staminaSystem;
     
     [Header("UI")]
     public Slider staminaBar; // Slider สำหรับแสดงค่า Stamina
@@ -25,109 +22,232 @@ public class PlayerMoment : MonoBehaviour
     [Header("Ground Check")] 
     public float playerHeight;
     public LayerMask whatIsGround;
-    private bool grounded;
+    bool grounded;
+    
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    
+    /*[Header("Stair Climbing")]
+    public LayerMask stairLayer;
+    public float stairClimbSpeed = 3f;
+    private bool onStairs = false;*/
 
     public Transform orientation;
 
     private float horizontalInput;
-    private float vertiaclInput;
-
+    private float verticalInput;
     private Vector3 moveDirection;
-
     private Rigidbody rb; 
+    private bool isCrouching = false;
+    
+    public GameObject OtherplayerUI;
+                                    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         
-        // กำหนดค่า Stamina เริ่มต้นเป็น 100 (ค่า maxStamina)
-        currentStamina = maxStamina;
+        if (!IsOwner)
+        {
+            // ถ้าไม่ใช่เจ้าของ (เป็น client) ให้ปิด UI
+            DisableUI();
+        }
+        if (!IsOwner) return; // ปิดการควบคุมถ้าไม่ใช่ผู้เล่นตัวเอง
         
+        staminaSystem = GetComponent<StaminaSystem>();
+        staminaSystem.Initialize(UpdateStaminaBar); // ส่ง Callback เพื่ออัปเดต UI
+    
         if (staminaBar != null)
         {
-            staminaBar.maxValue = maxStamina; // ตั้งค่า Max Value ให้ Slider
-            staminaBar.value = currentStamina; // ตั้งค่าเริ่มต้นของ Slider
+            staminaBar.maxValue = staminaSystem.GetMaxStamina();
         }
     }
 
     private void Update()
     {
-        //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        
-        MyInput();
+        if (!IsOwner) return;
 
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
-        
-        // ตรวจจับการกด Shift และเปลี่ยน moveSpeed
-        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        // ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
+        MyInput();
+        HandleCrouch();
+        SpeedControl();
+
+        if (grounded) rb.linearDamping = groundDrag;
+        else rb.linearDamping = 0;
+
+        // ตรวจสอบการกด Shift และการเคลื่อนไหวเพื่อให้ลด Stamina
+        if (Input.GetKey(KeyCode.LeftShift) && (horizontalInput != 0 || verticalInput != 0) && staminaSystem.GetCurrentStamina() > 0 && !isCrouching)
         {
             moveSpeed = runSpeed; // เพิ่มความเร็ว
-            DrainStamina();      // ลด Stamina
-            canRecoverStamina = false; // หยุดการฟื้นฟู Stamina ขณะวิ่ง
+            staminaSystem.DrainStamina(); // ลด Stamina
         }
-        else
+        else if (!isCrouching)
         {
             moveSpeed = walkSpeed; // กลับไปเดินปกติ
-            if (!canRecoverStamina)
-            {
-                // เริ่มฟื้นฟู Stamina หลังเวลาหน่วง
-                Invoke(nameof(EnableStaminaRecovery), staminaCooldownTime);
-            }
+            staminaSystem.RecoverStamina(); // ฟื้นฟู Stamina เมื่อไม่ได้วิ่ง
         }
-
-        // ฟื้นฟู Stamina เมื่อไม่ได้วิ่ง
-        if (canRecoverStamina && currentStamina < maxStamina)
-        {
-            RecoverStamina();
-        }
-        
-        // อัปเดต Stamina Bar
-        UpdateStaminaBar();
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (IsOwner)
+            MovePlayer();
+
+        /*if (!grounded) // ถ้าตัวละครไม่อยู่บนพื้น ให้เพิ่มแรงกดลง
+        {
+            rb.AddForce(Vector3.down * 150f, ForceMode.Acceleration);
+        }*/
     }
 
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        vertiaclInput = Input.GetAxisRaw("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * vertiaclInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        // ถ้าอยู่บนบันได ให้ควบคุมการเคลื่อนที่ในแนว Y โดยเพิ่มความเร็วการปีนขึ้นบันได
+        /*if (onStairs)
+        {
+            moveDirection.y = stairClimbSpeed * verticalInput; // ปีนขึ้นหรือลงบันได
+        }*/
+        
+        // on slope
+        if (OnSlope())
+        {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+
+            if (rb.linearVelocity .y > 0)
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+        }
+
+        // เพิ่มแรงเคลื่อนที่ในแนวนอน (x, z)
+        else if(grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        
+        // turn gravity off while on slope
+        rb.useGravity = !OnSlope();
     }
     
-    private void DrainStamina()
+    private void SpeedControl()
     {
-        currentStamina -= staminaDrainRate * Time.deltaTime; // ลด Stamina ตามอัตรา
-        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina); // ไม่ให้ต่ำกว่า 0
-    }
+        // limiting speed on slope
+        if (OnSlope())
+        {
+            if (rb.linearVelocity   .magnitude > moveSpeed)
+                rb.linearVelocity    = rb.linearVelocity   .normalized * moveSpeed;
+        }
+        // limiting speed on ground or in air
+        else
+        {
+            Vector3 flatVel = new Vector3(rb.linearVelocity   .x, 0f, rb.linearVelocity.z);
 
-    private void RecoverStamina()
-    {
-        currentStamina += staminaRecoveryRate * Time.deltaTime; // ฟื้นฟู Stamina ตามอัตรา
-        currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina); // ไม่ให้เกินค่า Max
+            // limit linearVelocity  if needed
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.linearVelocity  = new Vector3(limitedVel.x, rb.linearVelocity .y, limitedVel.z);
+            }
+        }
     }
-
-    private void EnableStaminaRecovery()
-    {
-        canRecoverStamina = true; // อนุญาตให้ฟื้นฟู Stamina
-    }
-
-    private void UpdateStaminaBar()
+    
+    private void UpdateStaminaBar(float newStamina)
     {
         if (staminaBar != null)
         {
-            staminaBar.value = currentStamina; // อัปเดตค่าปัจจุบันของ Slider
+            staminaBar.value = newStamina;
         }
     }
+    
+    private void HandleCrouch()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            isCrouching = true;
+            moveSpeed = crouchSpeed;
+        }
+        else
+        {
+            isCrouching = false;
+            moveSpeed = walkSpeed;
+        }
+    }
+    
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (((1 << other.gameObject.layer) & stairLayer) != 0)
+        {
+            onStairs = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (((1 << other.gameObject.layer) & stairLayer) != 0)
+        {
+            onStairs = false;
+        }
+    }
+    
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Stairs"))
+        {
+            rb.linearVelocity  = new Vector3(rb.linearVelocity .x, -2f, rb.linearVelocity .z); // บังคับความเร็ว Y ลง
+        }
+    }*/
+
+
+    
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        if (!IsOwner)
+        {
+            // ถ้าไม่ใช่เจ้าของ ให้ปิด UI
+            DisableUI();
+        }
+    }
+    
+
+    void DisableUI()
+    {
+        // ปิด UI ของ health bar หรือ UI อื่นๆ ที่ไม่ใช่เจ้าของ
+        if (OtherplayerUI != null)
+        {
+            OtherplayerUI.SetActive(false); // ปิด UI ของ health bar
+        }
+
+        // คุณสามารถเพิ่มการปิด UI อื่นๆ ที่ต้องการที่นี่
+    }
+    
+    private bool OnSlope()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+    
+    // ฟังก์ชันสำหรับให้ CharacterMovement อ่านค่าความเร็วปัจจุบัน
+    public float GetCurrentSpeed()
+    {
+        return moveSpeed;
+    }
 }
+ 

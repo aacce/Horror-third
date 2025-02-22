@@ -41,22 +41,34 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.transport\Analyzers\Unity.Transport.Analyzers.dll" />
     <Analyzer Include="D:\Unity\Hub\Editor\6000.0.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\Unity\Hub\Editor\6000.0.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="D:\Unity\Hub\Editor\6000.0.32f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\Multiplay\ClientNetworkAnimator.cs" />
     <Compile Include="Assets\scripts\PlayerCam.cs" />
+    <Compile Include="Assets\scripts\Multiplay\ClientNetworkTransform.cs" />
     <Compile Include="Assets\scripts\MoveCamera.cs" />
+    <Compile Include="Assets\scripts\ItemController.cs" />
     <Compile Include="Assets\scripts\HealthBarController.cs" />
     <Compile Include="Assets\scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\scripts\UI\QuestUI.cs" />
+    <Compile Include="Assets\scripts\UI\QuestManager.cs" />
     <Compile Include="Assets\Kevin Iglesias\Basic Motions\DemoScene\Scripts\BasicMotionsCamera.cs" />
     <Compile Include="Assets\scripts\PlayerMoment.cs" />
+    <Compile Include="Assets\scripts\ItemPickUp.cs" />
+    <Compile Include="Assets\scripts\TrapItem.cs" />
     <Compile Include="Assets\Kevin Iglesias\Basic Motions\DemoScene\Scripts\BasicMotionsCharacterController.cs" />
+    <Compile Include="Assets\scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\scripts\CharacterFollowCamera.cs" />
     <Compile Include="Assets\Kevin Iglesias\Basic Motions\DemoScene\Scripts\BasicMotionsAnimatorStateChanger.cs" />
     <Compile Include="Assets\Kevin Iglesias\Basic Motions\DemoScene\Scripts\BasicMotionsAnimatorParameterRemover.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\scripts\UI\UIAnimator.cs" />
+    <Compile Include="Assets\scripts\UI\StaminaSystem.cs" />
+    <Compile Include="Assets\scripts\Multiplay\MultiplayerManager.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
@@ -826,11 +838,17 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Networking.Editor">
+      <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Networking.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Netcode.Runtime">
+      <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Netcode.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
@@ -862,6 +880,9 @@
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Netcode.Editor">
+      <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Netcode.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
     </Reference>
@@ -873,6 +894,9 @@
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Editor">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Netcode.Editor.PackageChecker">
+      <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Netcode.Editor.PackageChecker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
@@ -924,6 +948,9 @@
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Networking.Transport">
+      <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.Networking.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
