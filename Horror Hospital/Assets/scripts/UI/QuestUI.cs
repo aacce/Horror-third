@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class QuestUI : MonoBehaviour
 {
     public Text questText; // UI Text ที่แสดงข้อความเควสต์
     public UIAnimator uiAnimator; // อ้างอิงไปยัง UIAnimator
-
     public static QuestUI Instance { get; private set; }
 
     void Awake()

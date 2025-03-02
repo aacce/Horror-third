@@ -27,6 +27,8 @@ public class ItemController : NetworkBehaviour
     private float colorChangeSpeed = 5f; // ความเร็วในการปรับสี
     
     private Color defaultHealthBarColor = Color.red;
+    private bool isTakingDamage = false;
+
 
     void Start()
     {
@@ -111,7 +113,6 @@ public class ItemController : NetworkBehaviour
         healthController.UpdateHealthBar();  // อัปเดต Health Bar
     }
 
-
     public void UseDamagePotion()
     {
         StartCoroutine(DamageOverTime(3, 10)); // ใช้ DamagePotion ที่ทำให้เสียหาย 3 ครั้ง, ครั้งละ 10 หน่วย
@@ -119,36 +120,56 @@ public class ItemController : NetworkBehaviour
 
     IEnumerator DamageOverTime(int times, float damage)
     {
+        isTakingDamage = true; // เริ่มต้นสถานะรับดาเมจ
+
         for (int i = 0; i < times; i++)
         {
-            Debug.Log("Calling TakeDamage with damage: " + damage);
-            TakeDamage(damage); // เรียกใช้ฟังก์ชัน TakeDamage
+            TakeDamage(damage);
             StartCoroutine(ShowDamageEffect());
-            yield return new WaitForSeconds(1f); // หน่วงเวลา 1 วินาทีระหว่างการเสียหายแต่ละครั้ง
+            yield return new WaitForSeconds(1f);
         }
-        StartCoroutine(RestoreSmoothness());
+
+        isTakingDamage = false; // ดาเมจหมดแล้ว
+
+        // ตรวจสอบอีกรอบว่าควรคืนค่า smoothness หรือไม่
+        if (!isTakingDamage)
+        {
+            StartCoroutine(RestoreSmoothness());
+        }
     }
 
     IEnumerator ShowDamageEffect()
     {
         if (vignette != null)
         {
-            targetSmoothness = 0.8f; // กำหนดค่าที่ต้องการให้ smoothness
-            // ค่อยๆ ปรับ smoothness ตามเวลาผ่านไป
-            while (Mathf.Abs(vignette.smoothness.value - targetSmoothness) > 0.01f)
+            targetSmoothness = 0.8f; // เพิ่มค่าความเข้มของเอฟเฟค
+            float t = 0f;
+
+            while (t < 1f)
             {
-                vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, targetSmoothness, Time.deltaTime * smoothnessSpeed);
+                t += Time.deltaTime * smoothnessSpeed;
+                vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, targetSmoothness, t);
                 yield return null;
+            }
+
+            // รอจนกว่าผู้เล่นจะไม่ได้รับดาเมจเพิ่มเติม
+            yield return new WaitForSeconds(1f);
+
+            // ตรวจสอบว่าผู้เล่นยังโดนดาเมจอยู่ไหม ถ้าไม่โดนแล้วให้รีเซ็ต smoothness
+            if (!isTakingDamage)
+            {
+                StartCoroutine(RestoreSmoothness());
             }
         }
     }
 
     IEnumerator RestoreSmoothness()
     {
-        // ค่อยๆ ปรับ smoothness กลับไปที่ 0 หลังจากแสดงผลดาเมจ
-        while (vignette.smoothness.value > 0.01f)
+        float t = 0f;
+        while (t < 1f)
         {
-            vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, 0f, Time.deltaTime * smoothnessSpeed);
+            t += Time.deltaTime * smoothnessSpeed;
+            vignette.smoothness.value = Mathf.Lerp(vignette.smoothness.value, 0f, t);
             yield return null;
         }
     }

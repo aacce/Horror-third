@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 4784025365695135125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005169042, y: 1.3589755, z: 0.23628776}
+  m_LocalPosition: {x: -0.00064461736, y: 1.3589755, z: 0.07800339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -852,9 +852,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  moveSpeed: 3
+  moveSpeed: 4
   runSpeed: 10
-  walkSpeed: 3
+  walkSpeed: 4
   crouchSpeed: 2
   groundDrag: 5
   staminaSystem: {fileID: 2597178085561937748}
@@ -1459,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.005813659
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1467,7 +1467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.15828437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalRotation.w

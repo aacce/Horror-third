@@ -1,35 +1,16 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Unity.Netcode;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    [SerializeField] private TMP_InputField joinCodeField;
+    public async void StartHost()
     {
-        SceneManager.LoadScene("GameScene"); // โหลด GameScene ก่อน
-        SceneManager.sceneLoaded += OnGameSceneLoaded; // รอให้โหลดเสร็จ
+        await HostSingleton.Instance.GameManager.StartHostAsync();
     }
 
-    private void OnGameSceneLoaded(Scene scene, LoadSceneMode mode)
+    public async void StartClient()
     {
-        if (scene.name == "GameScene")
-        {
-            if (NetworkManager.Singleton != null)
-            {
-                NetworkManager.Singleton.StartHost(); // เริ่ม Host หลังจากโหลด Scene
-            }
-            else
-            {
-                Debug.LogError("NetworkManager not found in GameScene!");
-            }
-
-            SceneManager.sceneLoaded -= OnGameSceneLoaded; // เอา event ออกเพื่อไม่ให้มันเรียกซ้ำ
-        }
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Game Quit!"); // Debug ให้เช็กว่าออกเกม
+        await ClientSingleton.Instance.GameManager.StartClientAsync(joinCodeField.text);
     }
 }

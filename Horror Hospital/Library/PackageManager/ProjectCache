@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638758029614129126
-    m_Hash: 944467066
+      ticks: 638762435077917934
+    m_Hash: 2868605419
   m_LockFileStatus:
     m_FilePath: C:/Users/USER/Downloads/Horror-third/Horror Hospital/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638758029614174663
-    m_Hash: 448089370
+      ticks: 638762435078021110
+    m_Hash: 3549865474
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -828,10 +828,12 @@ m_ResolvedPackages:
     - 2.5.0-pre.2
     - 2.5.1
     - 2.5.2
+    - 2.5.3
     compatible:
     - 2.5.1
     - 2.5.2
-    recommended: 2.5.2
+    - 2.5.3
+    recommended: 2.5.3
     deprecated: []
   dependencies:
   - name: com.unity.burst
@@ -1544,6 +1546,339 @@ m_ResolvedPackages:
   editorCompatibility:
     compatibilityLevel: 0
     minimumPackageVersion: 1.0.0
+    minimumUnityVersion: 6000.0.0a1
+- packageId: com.unity.multiplayer.center.quickstart@1.0.1
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.1
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.multiplayer.center.quickstart
+  assetPath: Packages/com.unity.multiplayer.center.quickstart
+  name: com.unity.multiplayer.center.quickstart
+  displayName: Multiplayer Center Quickstart Content
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: This package populates the Quickstart tab of the Multiplayer Center.
+  errors: []
+  versions:
+    all:
+    - 0.2.1
+    - 0.3.0
+    - 0.4.0
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0
+    - 1.0.1
+    compatible:
+    - 0.2.1
+    - 0.3.0
+    - 0.4.0
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0
+    - 1.0.1
+    recommended: 
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.multiplayer.center
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.multiplayer.center
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638700362515730000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.multiplayer.center.quickstart@1.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.multiplayer.center.git
+    revision: 23433a99efbf46511691df6fde1ab9ca4c8fbd4b
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n- Migrated forum links in all Quickstart
+    sections\n- Improved Quickstart flow by opening MPPM with the sample scenes"}'
+  assetStore:
+    productId: 
+  fingerprint: 1fcc41c23ee54bd90f68bb85c9270ba3af0c22fb
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 0.2.1
+    minimumUnityVersion: 6000.0.19f1
+- packageId: com.unity.multiplayer.playmode@1.3.3
+  testable: 0
+  isDirectDependency: 1
+  version: 1.3.3
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.multiplayer.playmode
+  assetPath: Packages/com.unity.multiplayer.playmode
+  name: com.unity.multiplayer.playmode
+  displayName: Multiplayer Play Mode
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Multiplayer Play Mode is a feature that enables multiple editor instances
+    to be opened simultaneously on the same development device.
+  errors: []
+  versions:
+    all:
+    - 0.1.0
+    - 0.1.1
+    - 0.2.0
+    - 0.3.0
+    - 0.4.0
+    - 0.5.0
+    - 0.6.0
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0-pre.4
+    - 1.0.0
+    - 1.1.0
+    - 1.2.0
+    - 1.2.1
+    - 1.2.2
+    - 1.3.0-exp.1
+    - 1.3.0-exp.2
+    - 1.3.0-exp.3
+    - 1.3.0-exp.4
+    - 1.3.0-pre.1
+    - 1.3.0-pre.2
+    - 1.3.0-pre.3
+    - 1.3.0
+    - 1.3.1
+    - 1.3.2
+    - 1.3.3
+    - 1.4.0-pre.1
+    - 1.4.0-pre.2
+    - 1.4.0-pre.3
+    - 1.4.0
+    compatible:
+    - 1.3.2
+    - 1.3.3
+    - 1.4.0-pre.1
+    - 1.4.0-pre.2
+    recommended: 1.3.3
+    deprecated: []
+  dependencies:
+  - name: com.unity.nuget.newtonsoft-json
+    version: 2.0.2
+  resolvedDependencies:
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638699758789410000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.multiplayer.playmode@1.3/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/multiplayer-workflows.git
+    revision: 6ae8c17d7a4a53a74f0ad59fdef3e9748a9d0fba
+    path: 
+  unityLifecycle:
+    version: 1.3.2
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Fixed an ArgumentNullException issue that
+    occurs across an MPPM upgrade with an actively set playmode Scenario configuration.\n\n###
+    Fixed \n- Fixed an issue where project settings were not getting propagated to
+    Virtual Players when entering Playmode via the play button"}'
+  assetStore:
+    productId: 
+  fingerprint: 7f4b34d911b742add04987f7f0561fec9ff9c189
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.3.2
+    minimumUnityVersion: 6000.0.22f1
+- packageId: com.unity.multiplayer.tools@2.2.3
+  testable: 0
+  isDirectDependency: 1
+  version: 2.2.3
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.multiplayer.tools
+  assetPath: Packages/com.unity.multiplayer.tools
+  name: com.unity.multiplayer.tools
+  displayName: Multiplayer Tools
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Adds a suite of tools that improve workflows for multiplayer development
+  errors: []
+  versions:
+    all:
+    - 1.0.0-pre.2
+    - 1.0.0-pre.6
+    - 1.0.0-pre.7
+    - 1.0.0-pre.8
+    - 1.0.0
+    - 1.1.0
+    - 1.1.1
+    - 2.0.0-pre.2
+    - 2.0.0-pre.3
+    - 2.0.0-pre.5
+    - 2.1.0
+    - 2.2.0
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+    compatible:
+    - 2.2.1
+    - 2.2.2
+    - 2.2.3
+    recommended: 2.2.3
+    deprecated: []
+  dependencies:
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.profiling.core
+    version: 1.0.2
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  resolvedDependencies:
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  - name: com.unity.profiling.core
+    version: 1.0.2
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  keywords:
+  - Multiplayer
+  - Netcode
+  - GameObjects
+  - Tools
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638701961488730000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.multiplayer.tools@2.2/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.multiplayer.tools.git
+    revision: 7dde0a73d4acf174eb6478cf14c899dfac6bd760
+    path: 
+  unityLifecycle:
+    version: 2.2.1
+    nextVersion: 
+    recommendedVersion: 2.2.0
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### *Network Scene Visualization*\n- Fixed a compatibility
+    issue with the Dedicated Server package."}'
+  assetStore:
+    productId: 
+  fingerprint: 5e1c41aee6e249bbbd497ba7f2eb1c2fa44ee560
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.2.1
     minimumUnityVersion: 6000.0.0a1
 - packageId: com.unity.netcode.gameobjects@2.2.0
   testable: 0
@@ -2784,6 +3119,163 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 4.9.2
     minimumUnityVersion: 2019.1.0a1
+- packageId: com.unity.services.multiplayer@1.1.1
+  testable: 0
+  isDirectDependency: 1
+  version: 1.1.1
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.multiplayer
+  assetPath: Packages/com.unity.services.multiplayer
+  name: com.unity.services.multiplayer
+  displayName: Multiplayer Services
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: The Multiplayer Services package is a one-stop solution for adding
+    multiplayer elements to a game developed in Unity. The Unity Gaming Services
+    (UGS) Multiplayer services powers these capabilities to define how groups of
+    players interact in your games.
+  errors: []
+  versions:
+    all:
+    - 0.0.5
+    - 0.0.6
+    - 0.0.7
+    - 0.2.0
+    - 0.3.0
+    - 0.4.0
+    - 0.4.2
+    - 0.5.0
+    - 0.5.1
+    - 0.6.0
+    - 1.0.0-pre.1
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.1.0
+    - 1.1.1
+    - 1.2.0-exp.1
+    - 1.2.0-exp.2
+    compatible:
+    - 1.1.0
+    - 1.1.1
+    - 1.2.0-exp.1
+    - 1.2.0-exp.2
+    recommended: 1.1.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.transport
+    version: 2.2.1
+  - name: com.unity.collections
+    version: 2.2.1
+  - name: com.unity.services.qos
+    version: 1.3.0
+  - name: com.unity.services.core
+    version: 1.13.0
+  - name: com.unity.services.wire
+    version: 1.2.7
+  - name: com.unity.services.deployment
+    version: 1.3.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.authentication
+    version: 3.3.3
+  resolvedDependencies:
+  - name: com.unity.transport
+    version: 2.4.0
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  - name: com.unity.services.qos
+    version: 1.3.0
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.authentication
+    version: 3.4.0
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.services.wire
+    version: 1.2.7
+  - name: com.unity.services.deployment
+    version: 1.3.0
+  - name: com.unity.services.deployment.api
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638744631494540000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.multiplayer@1.1/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: 4105b81935244a5e1b68db96a0d3e985f5d53b5e
+    path: 
+  unityLifecycle:
+    version: 1.1.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Added migration path validation to warn
+    users when they are using incompatible packages namely the lobby, matchmaker,
+    multiplay and relay standalone SDK.\n\n### Changed\n- Increased Lobby max player
+    count to 150.\n- Removing a player that is not in the lobby no longer throws
+    a `LobbyServiceException`, instead it will log that the player was not found.\n-
+    Updated error when trying to access `MultiplayService.Instance` while in the
+    editor.\n\n### Fixed\n- Fixed lobby so it no longer throws `ArgumentException:
+    An item with the same key has already been added`.\n- Fixed unauthorized error
+    when trying to remove other players from a lobby, with service account authentication.","gameService":{}}'
+  assetStore:
+    productId: 
+  fingerprint: 888db1d8279d6e0be7eeff73b98ed475c72a7dd5
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.1.0
+    minimumUnityVersion: 2022.3.0a1
 - packageId: com.unity.shadergraph@17.0.3
   testable: 0
   isDirectDependency: 1
@@ -6250,4 +6742,808 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 2.4.0
     minimumUnityVersion: 2022.3.0a1
+- packageId: com.unity.services.qos@1.3.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.3.0
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.qos
+  assetPath: Packages/com.unity.services.qos
+  name: com.unity.services.qos
+  displayName: QoS
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: assets
+  description: Provides connectivity Quality of Service (QoS) measurements from Unity
+    game clients to different Unity game services running in various geographic regions.
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.1.0
+    - 1.2.0
+    - 1.2.1
+    - 1.3.0
+    - 1.3.2
+    compatible:
+    - 1.3.0
+    - 1.3.2
+    recommended: 1.3.2
+    deprecated: []
+  dependencies:
+  - name: com.unity.collections
+    version: 1.2.4
+  - name: com.unity.services.core
+    version: 1.12.4
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.0.2
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.authentication
+    version: 2.0.0
+  resolvedDependencies:
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.authentication
+    version: 3.4.0
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638465522380000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.qos@1.3/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: c95a6f4077dc0f3c3083e32645ecbb0a92e7a135
+    path: 
+  unityLifecycle:
+    version: 1.3.0
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n- Added GetAllServersAsync.\n- Added GetQosResultsAsync.\n-
+    Register service to service registry\n- Updated unity core to 1.12.4"}'
+  assetStore:
+    productId: 
+  fingerprint: f4a3648d24d3f9ad047b1fae557532df86bb9d11
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.3.0
+    minimumUnityVersion: 2020.3.0a1
+- packageId: com.unity.services.core@1.14.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.14.0
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.core
+  assetPath: Packages/com.unity.services.core
+  name: com.unity.services.core
+  displayName: Services Core
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: 'This package defines common components used by multiple Game Service
+    packages.
+
+    These are standardized and aim to unify the overall experience
+    of working with Game Services SDK.'
+  errors: []
+  versions:
+    all:
+    - 1.0.1
+    - 1.1.0-pre.7
+    - 1.1.0-pre.8
+    - 1.1.0-pre.9
+    - 1.1.0-pre.10
+    - 1.1.0-pre.11
+    - 1.1.0-pre.41
+    - 1.1.0-pre.69
+    - 1.2.0
+    - 1.3.1
+    - 1.3.2
+    - 1.4.0
+    - 1.4.1
+    - 1.4.2
+    - 1.4.3
+    - 1.5.2
+    - 1.6.0
+    - 1.7.0
+    - 1.7.1
+    - 1.8.1
+    - 1.8.2
+    - 1.9.0
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.12.1
+    - 1.12.2
+    - 1.12.4
+    - 1.12.5
+    - 1.13.0
+    - 1.14.0
+    compatible:
+    - 1.14.0
+    recommended: 1.14.0
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638684041320270000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.core@1.14/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: 64962022211031c9e26ceec024d3587ea8e05a17
+    path: 
+  unityLifecycle:
+    version: 1.14.0
+    nextVersion: 
+    recommendedVersion: 1.14.0
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n\n- Added `ServicesInitialization` monobehaviour
+    to manage services in the scene authoring.\n- Added `ServicesBehaviour` abstract
+    monobehaviour as a base for behaviours built on top of services.\n- Added unique
+    identifier for custom service registry creation (`UnityServices.CreateServices`).\n-
+    Added custom services registries dictionary in `UnityServices.Services`.\n- Added
+    `GetIdentifier()` method to `IUnityServices` interface with a default implementation.\n\n###
+    Changed\n\n- Updated the minimum supported Editor version to 2021.3."}'
+  assetStore:
+    productId: 
+  fingerprint: 9e81a5e382457b799480b311ce51187be99abbbf
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.14.0
+    minimumUnityVersion: 2021.3.0a1
+- packageId: com.unity.services.wire@1.2.7
+  testable: 0
+  isDirectDependency: 0
+  version: 1.2.7
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.wire
+  assetPath: Packages/com.unity.services.wire
+  name: com.unity.services.wire
+  displayName: Wire
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Wire provides notifications in real-time for Unity Gaming Services
+    subscribing to a particular service and listening for messages from that subscription
+    through a websocket connection.
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview.20
+    - 1.0.0
+    - 1.1.0
+    - 1.1.1
+    - 1.1.4
+    - 1.1.5
+    - 1.1.6
+    - 1.1.8
+    - 1.2.0
+    - 1.2.2
+    - 1.2.3
+    - 1.2.5
+    - 1.2.6
+    - 1.2.7
+    - 1.2.8
+    - 1.3.0
+    compatible:
+    - 1.2.7
+    - 1.2.8
+    - 1.3.0
+    recommended: 1.2.8
+    deprecated: []
+  dependencies:
+  - name: com.unity.services.core
+    version: 1.12.5
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.services.authentication
+    version: 2.7.4
+  resolvedDependencies:
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.authentication
+    version: 3.4.0
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638615742778570000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.wire@1.2/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: 9cffdfabe0f434b75347351a78d6824effaf2774
+    path: 
+  unityLifecycle:
+    version: 1.2.7
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n\n- Token retrieval failures can no longer
+    break Wire reconnection attempts\n- Websocket channel will report error when
+    failing to retrieve token","supportedPlatforms":["Android","iOS","Linux","Mac","PC","PS4","PS5","Switch","WebGL"]}'
+  assetStore:
+    productId: 
+  fingerprint: 098672f918fac52d5936f43131548a06ea83b216
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.2.7
+    minimumUnityVersion: 2020.3.0a1
+- packageId: com.unity.services.deployment@1.3.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.3.0
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.deployment
+  assetPath: Packages/com.unity.services.deployment
+  name: com.unity.services.deployment
+  displayName: Deployment
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: assets
+  description: 'The Deployment package allows for a cohesive interface for the deployment
+    of assets and configurations for UGS services.
+
+
+    It is not used on its own
+    as UGS services will integrate with it.
+
+    It provides the base tooling, such
+    as the Deployment Window, so that UGS services have shared functionality surrounding
+    the deployment of the service''s configuration files.'
+  errors: []
+  versions:
+    all:
+    - 1.0.0-pre.4
+    - 1.0.0-pre.5
+    - 1.0.0-pre.7
+    - 1.0.0
+    - 1.0.1
+    - 1.1.0
+    - 1.2.0
+    - 1.2.1
+    - 1.3.0
+    - 1.4.0
+    - 1.4.1
+    compatible:
+    - 1.3.0
+    - 1.4.0
+    - 1.4.1
+    recommended: 1.4.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.services.core
+    version: 1.12.0
+  - name: com.unity.services.deployment.api
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  - name: com.unity.services.deployment.api
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638384898980000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.deployment@1.3/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: baf0a678d3c8d1ed1941a064174bbe134374446c
+    path: 
+  unityLifecycle:
+    version: 1.3.0
+    nextVersion: 
+    recommendedVersion: 1.4.0
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Added deployment samples for the following
+    services\n  - Economy\n  - Cloud Code Scripts & Modules\n  - Leaderboards\n 
+    - Remote Config\n\n### Fixed\n- Fixed a bug where DeploymentItems could be deployed
+    multiple times concurrently","gameService":{"groupId":"devops"}}'
+  assetStore:
+    productId: 
+  fingerprint: 0991a9c9ce0d545673c1c06c19242af6eca2d8ea
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.3.0
+    minimumUnityVersion: 2021.3.0a1
+- packageId: com.unity.nuget.newtonsoft-json@3.2.1
+  testable: 0
+  isDirectDependency: 0
+  version: 3.2.1
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.nuget.newtonsoft-json
+  assetPath: Packages/com.unity.nuget.newtonsoft-json
+  name: com.unity.nuget.newtonsoft-json
+  displayName: Newtonsoft Json
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
+    synced to version 13.0.2.
+
+
+    This package is used for advanced json serialization
+    and deserialization. Most Unity users will be better suited using the existing
+    json tools built into Unity.
+
+    To avoid assembly clashes, please use this
+    package if you intend to use Newtonsoft Json.'
+  errors: []
+  versions:
+    all:
+    - 1.0.0-preview.2
+    - 1.0.0-preview.3
+    - 1.0.0-preview.4
+    - 1.0.1-preview.1
+    - 1.1.2
+    - 2.0.0-preview
+    - 2.0.0-preview.1
+    - 2.0.0-preview.2
+    - 2.0.0
+    - 2.0.1-preview.1
+    - 2.0.2
+    - 3.0.1
+    - 3.0.2
+    - 3.1.0
+    - 3.2.0
+    - 3.2.1
+    compatible:
+    - 3.2.1
+    recommended: 3.2.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638186318800000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
+    revision: d8e49aef8979bef617144382052ec2f479645eaf
+    path: 
+  unityLifecycle:
+    version: 3.2.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"* Fixed Newtonsoft DLL when compiling with netstandard
+    2.0."}'
+  assetStore:
+    productId: 
+  fingerprint: 74deb55db2a0c29ddfda576608bcb86abbd13ee6
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.2.1
+    minimumUnityVersion: 2018.4.0a1
+- packageId: com.unity.services.authentication@3.4.0
+  testable: 0
+  isDirectDependency: 0
+  version: 3.4.0
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.authentication
+  assetPath: Packages/com.unity.services.authentication
+  name: com.unity.services.authentication
+  displayName: Authentication
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: 'Client SDK offering player identity management for Unity Gaming Services.
+
+
+    Identity
+    providers can be configured from the editor or the Unity Dashboard.
+
+
+    Player
+    management is available in the Unity Dashboard.'
+  errors: []
+  versions:
+    all:
+    - 1.0.0-pre.4
+    - 1.0.0-pre.6
+    - 1.0.0-pre.37
+    - 2.0.0
+    - 2.1.1
+    - 2.2.0
+    - 2.3.1
+    - 2.4.0
+    - 2.5.0-pre.3
+    - 2.5.0
+    - 2.6.1
+    - 2.7.1
+    - 2.7.2
+    - 2.7.4
+    - 3.0.0
+    - 3.1.0
+    - 3.2.0
+    - 3.3.0
+    - 3.3.1
+    - 3.3.3
+    - 3.4.0
+    compatible:
+    - 3.4.0
+    recommended: 3.4.0
+    deprecated: []
+  dependencies:
+  - name: com.unity.ugui
+    version: 1.0.0
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.ugui
+    version: 2.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.services.core
+    version: 1.14.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638684041330010000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.authentication@3.4/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: 7c64fb37cabe29e3c36db3668924e045d2e6a6b1
+    path: 
+  unityLifecycle:
+    version: 3.4.0
+    nextVersion: 
+    recommendedVersion: 3.4.0
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Added `PlayerAuthentication` component
+    to manage authentication in the scene authoring.\n\n### Changed\n- Updated the
+    minimum supported Editor version to 2021.3.","gameService":{"configurePath":"Project/Services/Authentication","genericDashboardUrl":"https://cloud.unity3d.com/player-authentication","projectDashboardUrl":"https://cloud.unity3d.com/organizations/{0}/projects/{1}/player-authentication/about","projectDashboardUrlType":"OrganizationKeyAndProjectGuid"}}'
+  assetStore:
+    productId: 
+  fingerprint: f6045b608d0a76ab2748edb777a786b0ca3cd2e0
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.4.0
+    minimumUnityVersion: 2021.3.0a1
+- packageId: com.unity.profiling.core@1.0.2
+  testable: 0
+  isDirectDependency: 0
+  version: 1.0.2
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.profiling.core
+  assetPath: Packages/com.unity.profiling.core
+  name: com.unity.profiling.core
+  displayName: Unity Profiling Core API
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: The Unity Profiling Core package provides an API for code instrumentation
+    markup, and for profiling statistic collection.
+  errors: []
+  versions:
+    all:
+    - 0.1.0-preview.1
+    - 0.2.0-preview.1
+    - 0.2.1-preview.1
+    - 1.0.0-pre.1
+    - 1.0.0
+    - 1.0.2
+    compatible:
+    - 1.0.2
+    recommended: 1.0.2
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - profiler
+  - profiling
+  - api
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637828752310000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/profiler.git
+    revision: 2189ba14439d76a4083f59fae87163b4bdfd49c2
+    path: 
+  unityLifecycle:
+    version: 1.0.2
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: 
+  assetStore:
+    productId: 
+  fingerprint: aac7b93912bc5df5fe06b04ff1b758493cdc2346
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.0.2
+    minimumUnityVersion: 2020.1.0a1
+- packageId: com.unity.services.deployment.api@1.0.0
+  testable: 0
+  isDirectDependency: 0
+  version: 1.0.0
+  source: 1
+  resolvedPath: C:\Users\USER\Downloads\Horror-third\Horror Hospital\Library\PackageCache\com.unity.services.deployment.api
+  assetPath: Packages/com.unity.services.deployment.api
+  name: com.unity.services.deployment.api
+  displayName: Deployment API
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: asset
+  description: This package contains the API designed to allow for implementing Deployment
+    functionality.
+  errors: []
+  versions:
+    all:
+    - 1.0.0-pre.3
+    - 1.0.0-pre.5
+    - 1.0.0
+    - 1.1.2
+    compatible:
+    - 1.0.0
+    - 1.1.2
+    recommended: 1.1.2
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638157741160000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.services.deployment.api@1.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
+    revision: e4df831d5e80c5d0c29785d4140e031b0bbc0264
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
+    recommendedVersion: 1.1.2
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Make internal API public."}'
+  assetStore:
+    productId: 
+  fingerprint: e87c554599f00a0c1cac936220969bb69ffb9a53
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.0.0
+    minimumUnityVersion: 2021.3.0a1
 m_BuiltInPackagesHash: 02ccae8a6fea3b773b91b78f7a8d92680a6ca369

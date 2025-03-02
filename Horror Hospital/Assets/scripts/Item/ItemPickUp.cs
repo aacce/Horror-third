@@ -59,24 +59,33 @@ public class ItemPickUp : NetworkBehaviour
     void PickUpItemServerRpc(ulong playerId, ServerRpcParams rpcParams = default)
     {
         NetworkObject networkObject = GetComponent<NetworkObject>();
+
+        // ตรวจสอบว่า NetworkObject ถูก spawn หรือยัง
         if (!networkObject.IsSpawned)
         {
-            networkObject.Spawn();
+            networkObject.Spawn(); // ให้ Server เป็นคน Spawn
+        }
+
+        // ตรวจสอบสถานะ vulnerable ก่อนเก็บ Hilly
+        if (itemController != null && itemType == ItemType.Hilly && itemController.IsVulnerable())
+        {
+            Debug.Log("Cannot pick up Hilly while vulnerable!");
+            return; // ไม่ให้เก็บยา Hilly
         }
 
         // เปลี่ยน Ownership ให้ playerId ที่เก็บของ
         networkObject.ChangeOwnership(playerId);
 
-        if (itemController != null && itemType == ItemType.Hilly && !itemController.IsVulnerable())
+        if (itemController != null && itemType == ItemType.Hilly)
         {
+            Debug.Log($"[Server] Player {playerId} collected Hilly. Sending RPC to update quest.");
             QuestManager.Instance.CollectHillyServerRpc(playerId);
         }
 
+        // ส่งคำสั่งให้ Client ทำการทำลายไอเท็ม
         PickUpItemClientRpc(playerId);
     }
 
-
-    
     [ClientRpc]
     void PickUpItemClientRpc(ulong playerId)
     {
@@ -101,10 +110,12 @@ public class ItemPickUp : NetworkBehaviour
             {
                 itemController.UseHilly();
             }
-        }
 
-        Destroy(gameObject); // ทำลายไอเท็มหลังจากเก็บ
+            // ทำลายไอเท็มหลังจากเก็บ
+            Destroy(gameObject);
+        }
     }
+
     
     // ฟังก์ชันตรวจสอบว่าไอเท็มอยู่ในมุมมองของผู้เล่นหรือไม่
     bool IsLookingAtItem()
