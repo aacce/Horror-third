@@ -56,4 +56,15 @@ public class QuestManager : NetworkBehaviour
             }
         }
     }
+    
+    public bool IsQuestComplete()
+    {
+        foreach (var count in playerHillyCount.Values)
+        {
+            if (count >= hillyGoal) return true;
+        }
+        return false;
+    }
+
+
 }       

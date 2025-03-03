@@ -27,6 +27,8 @@ public class HealthBarController : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void TakeDamageServerRpc(float damage)
     {
+        Debug.Log("TakeDamage Called: " + damage);
+
         if (!IsServer) return;
         currentHealth.Value = Mathf.Clamp(currentHealth.Value - damage, 0, maxHealth);
         UpdateHealthUIClientRpc(currentHealth.Value);

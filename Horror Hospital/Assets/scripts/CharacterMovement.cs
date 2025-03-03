@@ -104,7 +104,5 @@ public class CharacterMovement : NetworkBehaviour
         // คำนวณความเร็วการเคลื่อนไหว
         float currentSpeed = playerMoment.GetCurrentSpeed();
         Vector3 moveDirection = inputVec.normalized * currentSpeed;
-
-        
     }
 }

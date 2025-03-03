@@ -22,32 +22,22 @@ public class PlayerMoment : NetworkBehaviour
     [Header("Ground Check")] 
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    private bool Grounded;
     
-    [Header("Slope Handling")]
-    public float maxSlopeAngle;
-    private RaycastHit slopeHit;
-    
-    /*[Header("Stair Climbing")]
-    public LayerMask stairLayer;
-    public float stairClimbSpeed = 3f;
-    private bool onStairs = false;*/
-
     public Transform orientation;
-
+    public float gravity = 0f;
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
-    private Rigidbody rb; 
     private bool isCrouching = false;
-    
+    private CharacterController controller;
     public GameObject OtherplayerUI;
-                                    
+
+    [Header("Stair Check")]
+    public LayerMask stairLayer; // เพิ่ม LayerMask สำหรับตรวจสอบเลเยอร์ "Stair"
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-        
         if (!IsOwner)
         {
             // ถ้าไม่ใช่เจ้าของ (เป็น client) ให้ปิด UI
@@ -55,6 +45,7 @@ public class PlayerMoment : NetworkBehaviour
         }
         if (!IsOwner) return; // ปิดการควบคุมถ้าไม่ใช่ผู้เล่นตัวเอง
         
+        controller = GetComponent<CharacterController>();
         staminaSystem = GetComponent<StaminaSystem>();
         staminaSystem.Initialize(UpdateStaminaBar); // ส่ง Callback เพื่ออัปเดต UI
     
@@ -69,15 +60,11 @@ public class PlayerMoment : NetworkBehaviour
         if (!IsOwner) return;
 
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
+        Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        
         MyInput();
         HandleCrouch();
-        SpeedControl();
-
-        if (grounded) rb.linearDamping = groundDrag;
-        else rb.linearDamping = 0;
-
+       
         // ตรวจสอบการกด Shift และการเคลื่อนไหวเพื่อให้ลด Stamina
         if (Input.GetKey(KeyCode.LeftShift) && (horizontalInput != 0 || verticalInput != 0) && staminaSystem.GetCurrentStamina() > 0 && !isCrouching)
         {
@@ -89,17 +76,16 @@ public class PlayerMoment : NetworkBehaviour
             moveSpeed = walkSpeed; // กลับไปเดินปกติ
             staminaSystem.RecoverStamina(); // ฟื้นฟู Stamina เมื่อไม่ได้วิ่ง
         }
+        
+        // เพิ่มแรงโน้มถ่วง
+        moveDirection.y += gravity * Time.deltaTime;
+        controller.Move(moveDirection * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
         if (IsOwner)
             MovePlayer();
-
-        /*if (!grounded) // ถ้าตัวละครไม่อยู่บนพื้น ให้เพิ่มแรงกดลง
-        {
-            rb.AddForce(Vector3.down * 150f, ForceMode.Acceleration);
-        }*/
     }
 
     private void MyInput()
@@ -111,49 +97,9 @@ public class PlayerMoment : NetworkBehaviour
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        // ถ้าอยู่บนบันได ให้ควบคุมการเคลื่อนที่ในแนว Y โดยเพิ่มความเร็วการปีนขึ้นบันได
-        /*if (onStairs)
+        if (moveDirection.magnitude >= 0.1f)
         {
-            moveDirection.y = stairClimbSpeed * verticalInput; // ปีนขึ้นหรือลงบันได
-        }*/
-        
-        // on slope
-        if (OnSlope())
-        {
-            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
-
-            if (rb.linearVelocity .y > 0)
-                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
-        }
-
-        // เพิ่มแรงเคลื่อนที่ในแนวนอน (x, z)
-        else if(grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        
-        // turn gravity off while on slope
-        rb.useGravity = !OnSlope();
-    }
-    
-    private void SpeedControl()
-    {
-        // limiting speed on slope
-        if (OnSlope())
-        {
-            if (rb.linearVelocity   .magnitude > moveSpeed)
-                rb.linearVelocity    = rb.linearVelocity   .normalized * moveSpeed;
-        }
-        // limiting speed on ground or in air
-        else
-        {
-            Vector3 flatVel = new Vector3(rb.linearVelocity   .x, 0f, rb.linearVelocity.z);
-
-            // limit linearVelocity  if needed
-            if (flatVel.magnitude > moveSpeed)
-            {
-                Vector3 limitedVel = flatVel.normalized * moveSpeed;
-                rb.linearVelocity  = new Vector3(limitedVel.x, rb.linearVelocity .y, limitedVel.z);
-            }
+            controller.Move(moveDirection * moveSpeed * Time.deltaTime);
         }
     }
     
@@ -178,32 +124,27 @@ public class PlayerMoment : NetworkBehaviour
             moveSpeed = walkSpeed;
         }
     }
-    
-    /*private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
+        // เช็คเมื่อชนกับเลเยอร์ "Stair"
         if (((1 << other.gameObject.layer) & stairLayer) != 0)
         {
-            onStairs = true;
+            gravity = -300f; // เพิ่มค่า gravity เมื่ออยู่บนบันได
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        // เช็คเมื่อออกจากเลเยอร์ "Stair"
         if (((1 << other.gameObject.layer) & stairLayer) != 0)
         {
-            onStairs = false;
+            if (((1 << other.gameObject.layer) & whatIsGround) != 0)
+            {
+                gravity = 0f; // กลับค่า gravity เป็น 0 เมื่อไม่อยู่บนบันได
+            }
         }
     }
-    
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Stairs"))
-        {
-            rb.linearVelocity  = new Vector3(rb.linearVelocity .x, -2f, rb.linearVelocity .z); // บังคับความเร็ว Y ลง
-        }
-    }*/
-
-
     
     public override void OnNetworkSpawn()
     {
@@ -215,7 +156,6 @@ public class PlayerMoment : NetworkBehaviour
             DisableUI();
         }
     }
-    
 
     void DisableUI()
     {
@@ -224,24 +164,6 @@ public class PlayerMoment : NetworkBehaviour
         {
             OtherplayerUI.SetActive(false); // ปิด UI ของ health bar
         }
-
-        // คุณสามารถเพิ่มการปิด UI อื่นๆ ที่ต้องการที่นี่
-    }
-    
-    private bool OnSlope()
-    {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
-        }
-
-        return false;
-    }
-
-    private Vector3 GetSlopeMoveDirection()
-    {
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
     
     // ฟังก์ชันสำหรับให้ CharacterMovement อ่านค่าความเร็วปัจจุบัน
@@ -250,4 +172,3 @@ public class PlayerMoment : NetworkBehaviour
         return moveSpeed;
     }
 }
- 

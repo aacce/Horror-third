@@ -9,6 +9,10 @@ public class ItemController : NetworkBehaviour
     public HealthBarController healthController; // ควบคุมเลือดตัวละคร
     public Volume postProcessingVolume; // Post Processing Volume
     
+    private int healingPotionCount = 0; // นับจำนวนครั้งที่ใช้ฮีล
+    private float healCooldownEndTime = 0; // เวลาสิ้นสุดของการแบนฮีล
+    private float healBanDuration = 10f; // 2 นาที (120 วินาที)
+    
     private Vignette vignette; // เอฟเฟคขอบมืด (สำหรับ Damage)
     private ColorAdjustments colorAdjustments; // เอฟเฟคการปรับสี (สำหรับ Blackout)
     
@@ -16,10 +20,6 @@ public class ItemController : NetworkBehaviour
     private float vulnerableDuration = 10f; // เวลาของสถานะเปราะบาง
     private float vulnerableEndTime = 0f; // เวลาที่สถานะเปราะบางสิ้นสุด
 
-    private int healingPotionCount = 0; // นับจำนวนครั้งที่ใช้ฮีล
-    private float healCooldownEndTime = 0; // เวลาสิ้นสุดของการแบนฮีล
-    private float healBanDuration = 10f; // 2 นาที (120 วินาที)
-    
     private float targetSmoothness = 0f; // ค่าปัจจุบันของ Smoothness
     private float smoothnessSpeed = 5f; // ความเร็วในการปรับ Smoothness
     
@@ -42,7 +42,6 @@ public class ItemController : NetworkBehaviour
         {
             colorAdjustments.colorFilter.value = new Color(255f / 255f, 255f / 255f, 255f / 255f); // ตั้งค่าสี RGB (125, 125, 125)
         }
-        
     }
     
     public void UseHilly()

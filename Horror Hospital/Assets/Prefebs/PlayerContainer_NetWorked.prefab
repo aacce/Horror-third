@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 4784025365695135125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00064461736, y: 1.3589755, z: 0.07800339}
+  m_LocalPosition: {x: -0.00064461736, y: 1.5589756, z: 0.07800339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -753,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8646145903132414076}
-  - component: {fileID: 5329739516620937065}
+  - component: {fileID: -8323157291196252392}
   - component: {fileID: 3806122107892990706}
   - component: {fileID: 5039919849409779054}
   - component: {fileID: 2597178085561937748}
@@ -787,33 +787,31 @@ Transform:
   - {fileID: 3679033493506582363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &5329739516620937065
-Rigidbody:
+--- !u!143 &-8323157291196252392
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6245357699206384896}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 1
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.7
+  m_Radius: 0.33
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &3806122107892990706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,20 +850,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  moveSpeed: 4
-  runSpeed: 10
-  walkSpeed: 4
+  moveSpeed: 3
+  runSpeed: 6
+  walkSpeed: 3
   crouchSpeed: 2
   groundDrag: 5
   staminaSystem: {fileID: 2597178085561937748}
   staminaBar: {fileID: 9208996360322423984}
-  playerHeight: 2
+  playerHeight: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  maxSlopeAngle: 40
   orientation: {fileID: 3256854549589029227}
+  gravity: 0
   OtherplayerUI: {fileID: 3357860167274980085}
+  stairLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &2597178085561937748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e821495ef2c915489b9ed7713cf4587, type: 3}
       propertyPath: m_LocalPosition.z

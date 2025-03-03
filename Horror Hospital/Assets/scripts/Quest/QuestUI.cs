@@ -24,7 +24,7 @@ public class QuestUI : MonoBehaviour
         if (collected >= QuestManager.Instance.hillyGoal)
         {
             questText.text = "สำเร็จเควสแล้ว!";
-            uiAnimator.ShowUI(); // เรียกใช้ UIAnimator ให้แสดง UI
+            //uiAnimator.ShowUI(); // เรียกใช้ UIAnimator ให้แสดง UI
         }
         else
         {

@@ -20,6 +20,7 @@ public class ItemPickUp : NetworkBehaviour
     
     void Update()
     {
+        CheckPlayerInRange();
         if (isPlayerInRange && IsLookingAtItem() && Vector3.Distance(transform.position, playerCamera.transform.position) <= pickUpRange)
         {
             if (Input.GetKeyDown(KeyCode.F)) 
@@ -37,23 +38,30 @@ public class ItemPickUp : NetworkBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    void CheckPlayerInRange()
     {
-        if (other.CompareTag("Player"))
+        isPlayerInRange = false;
+        itemController = null; // รีเซ็ตค่า
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRange);
+        foreach (var collider in hitColliders)
         {
-            isPlayerInRange = true;
-            itemController = other.GetComponent<ItemController>();
+            if (collider.CompareTag("Player"))
+            {
+                Vector3 closestPoint = GetComponent<Collider>().ClosestPoint(collider.transform.position);
+                float distance = Vector3.Distance(collider.transform.position, closestPoint);
+
+                if (distance <= 1.5f) // ปรับระยะให้เหมาะสม
+                {
+                    isPlayerInRange = true;
+                    itemController = collider.GetComponent<ItemController>();
+                    break;
+                }
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInRange = false;
-            itemController = null;
-        }
-    }
+
     
     [ServerRpc(RequireOwnership = false)]
     void PickUpItemServerRpc(ulong playerId, ServerRpcParams rpcParams = default)
@@ -112,10 +120,15 @@ public class ItemPickUp : NetworkBehaviour
             }
 
             // ทำลายไอเท็มหลังจากเก็บ
-            Destroy(gameObject);
+            DestroyItemServerRpc();
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    void DestroyItemServerRpc()
+    {
+        GetComponent<NetworkObject>().Despawn(); // ทำลายไอเท็มผ่าน Server
+    }
     
     // ฟังก์ชันตรวจสอบว่าไอเท็มอยู่ในมุมมองของผู้เล่นหรือไม่
     bool IsLookingAtItem()
